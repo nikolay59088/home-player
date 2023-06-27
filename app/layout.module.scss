@@ -1,0 +1,35 @@
+@import "variables";
+
+.htmlContainer{
+  width: 99vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, 'Helvetica Neue', Helvetica, Arial;
+  color: $primaryTextColor;
+
+  .bodyContainer {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    background-color: $primaryBackgroundColor;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    & > .mainContainer{
+      flex: 1 1 auto;
+      display: flex;
+
+      & > main {
+        width: 100%;
+        background-color: $secondaryBackgroundColor;
+        padding-bottom: max(8vh, 70px);
+      }
+    }
+  }
+}
+
+

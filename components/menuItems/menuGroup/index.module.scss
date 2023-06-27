@@ -1,0 +1,57 @@
+@import "../../../app/variables";
+
+.menuGroupContainer{
+  display: flex;
+  flex-direction: column;
+  color: $secondaryTextColor;
+  text-decoration: none;
+  user-select: none;
+
+  .menuGroup{
+    display: flex;
+    align-items: center;
+    height: 25px;
+    color: $secondaryTextColor;
+    text-decoration: none;
+    padding: 6px 16px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $secondaryBackgroundColor;
+    }
+
+    & > .imageItem{
+      padding-right: 20px;
+    }
+
+    & > span{
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  .childrenItemsContainer{
+    a{
+      padding-left: 30px;
+    }
+  }
+
+}
+
+.menuItemContainerClosed{
+  user-select: none;
+
+  .menuGroup{
+    padding: 6px 11px;
+
+    & > .imageItem{
+      padding-right: 0;
+    }
+  }
+
+  .childrenItemsContainer{
+    a{
+      padding-left: 11px;
+    }
+  }
+}

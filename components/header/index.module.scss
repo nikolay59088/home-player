@@ -1,0 +1,32 @@
+
+.headerContainer{
+  height: 5vh;
+  min-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+
+  & > .leftPartContainer{
+    display: flex;
+    align-items: center;
+
+    & > .menuImage{
+      margin-right: 25px;
+
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+
+  & > .rightPartContainer{
+    display: flex;
+    align-items: center;
+
+    & > .profileImage{
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}

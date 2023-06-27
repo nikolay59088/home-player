@@ -1,0 +1,20 @@
+
+.leftMenuContainer{
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 20px);
+  width: 15vw;
+  min-width: 170px;
+  transition: .2s;
+  padding-top: 20px;
+}
+
+.leftMenuContainerClosed{
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 20px);
+  width: 3vw;
+  min-width: 50px;
+  transition: .2s;
+  padding-top: 20px;
+}

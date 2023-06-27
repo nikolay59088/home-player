@@ -1,0 +1,56 @@
+@import "../../app/variables";
+
+.tracksContainer{
+  display: flex;
+  flex-direction: column;
+
+  .tableListContainer{
+    background-color: $tableBackgroundColor;
+    display: flex;
+    width: 100%;
+
+    .tableList{
+      width: 100%;
+      table-layout:fixed;
+      font-size: 12px;
+      color: $secondaryTextColor;
+      border-collapse: collapse;
+
+
+      thead{
+        tr{
+          height: 45px;
+
+          th{
+            user-select: none;
+          }
+        }
+      }
+
+      tbody{
+        tr{
+          height: 45px;
+          user-select: none;
+          cursor: pointer;
+
+          &:hover{
+            background-color: $tableHoverColor;
+          }
+        }
+      }
+
+      th{
+        padding: 10px;
+        text-align: start;
+        border-bottom: 1px solid rgba($secondaryTextColor, .2);
+      }
+
+      td{
+        padding: 10px;
+        border-bottom: 1px solid rgba($secondaryTextColor, .1);
+      }
+    }
+  }
+
+
+}

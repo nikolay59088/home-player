@@ -1,0 +1,13 @@
+@import "../../app/variables";
+
+.playerContainer{
+  display: flex;
+  bottom: 0;
+  width: 99.8vw;
+  position: absolute;
+  height: 8vh;
+  min-height: 70px;
+  background-color: rgba($primaryBackgroundColor, .75);
+  border-top: 1px solid rgba($secondaryTextColor, .2);
+
+}
