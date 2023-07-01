@@ -22,6 +22,9 @@
           height: 45px;
 
           th{
+            padding: 10px;
+            text-align: start;
+            border-bottom: 1px solid rgba($secondaryTextColor, .2);
             user-select: none;
           }
         }
@@ -37,20 +40,13 @@
             background-color: $tableHoverColor;
           }
         }
-      }
 
-      th{
-        padding: 10px;
-        text-align: start;
-        border-bottom: 1px solid rgba($secondaryTextColor, .2);
-      }
-
-      td{
-        padding: 10px;
-        border-bottom: 1px solid rgba($secondaryTextColor, .1);
+        td{
+          user-select: none;
+          padding: 10px;
+          border-bottom: 1px solid rgba($secondaryTextColor, .1);
+        }
       }
     }
   }
-
-
 }

@@ -1,0 +1,28 @@
+@import "../../app/variables";
+
+.albumItemContainer{
+  background-color: $albumBackgroundColor;
+  margin: 5px;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  max-width: 15%;
+  height: 170px;
+  border-radius: 7px;
+  text-decoration: none;
+  padding: 7px 15px;
+  align-items: center;
+  color: $secondaryTextColor;
+
+  & > img {
+    height: 80%;
+  }
+
+  &:hover{
+    background-color: $albumHoverColor;
+  }
+
+  .nameSong{
+    color: $primaryTextColor
+  }
+}

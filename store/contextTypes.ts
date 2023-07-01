@@ -1,11 +1,13 @@
 
-type currentTrackType = {
+export type currentTrackType = {
   name: string,
   artist: string,
   album: string
   year: number,
-  duration: string,
-  link: string
+  duration: number,
+  quality: number,
+  link: string,
+  imgSong: string
 }
 
 export type contextDataType = {

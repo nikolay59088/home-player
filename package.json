@@ -15,6 +15,7 @@
     "typeorm:migration:run": "npm run typeorm -- migration:run"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.0.1",
     "@types/node": "20.3.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",

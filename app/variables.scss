@@ -3,7 +3,9 @@
 $primaryBackgroundColor: rgb(0, 0, 0);
 $secondaryBackgroundColor: #171717;
 
-
+//album
+$albumBackgroundColor: #191919;
+$albumHoverColor: #282828;
 
 //text
 $primaryTextColor: rgb(255, 255, 255);
@@ -12,3 +14,30 @@ $secondaryTextColor: #B3B3B3;
 //table
 $tableBackgroundColor: #121212;
 $tableHoverColor: #1D1D1D;
+
+//mainColors
+$lightColor: #31C27C;
+$mediumColor: #1DB251;
+$darkColor: #008827;
+
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // Для Chrome
+  ::-webkit-scrollbar {
+    width:  $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // Для Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}

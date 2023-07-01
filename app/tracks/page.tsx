@@ -14,36 +14,50 @@ const Page = () => {
     {
       name: 'Трек 1',
       album: 'Альбом1',
-      author: 'Автор 1',
+      artist: 'Автор 1',
       year: 2000,
       quality: 320,
-      duration: '03:42'
+      duration: 330,//'03:42',
+      link: '/testSongs/testSong1.mp3',
+      imgSong: ''
     },
     {
       name: 'Трек 1',
       album: 'Альбом2',
-      author: 'Автор 1',
+      artist: 'Автор 1',
       year: 2000,
       quality: 320,
-      duration: '03:42'
+      duration: 222,//'03:42',
+      link: '/testSongs/testSong1.mp3',
+      imgSong: ''
     },
     {
       name: 'Трек 1',
       album: 'Альбом3',
-      author: 'Автор 1',
+      artist: 'Автор 1',
       year: 2000,
       quality: 320,
-      duration: '03:42'
+      duration: 222,//'03:42',
+      link: '/testSongs/testSong1.mp3',
+      imgSong: ''
     }
   ]
 
   const clickTrack = (e: MouseEvent<HTMLTableRowElement>) => {
-    console.log(e)
-    dispatch({ 
-      type: UPDATE_PLAYER_STATUS, 
-      payload: { 
-        MPOpened: true 
-      } 
+
+    let target = e.target as HTMLTableRowElement
+  if (target.localName === 'td'){
+    target = target.parentElement as HTMLTableRowElement
+  }
+
+  const foundObj = examplesTracks[target.rowIndex - 1]
+
+    dispatch({
+      type: UPDATE_PLAYER_STATUS,
+      payload: {
+        MPOpened: true,
+        currentTrack: { ...foundObj}
+      }
     })
   }
 
@@ -66,13 +80,13 @@ const Page = () => {
           <tbody>
             {
               examplesTracks.map(row => {
-                return <tr key={row.name + row.album + row.author} onClick={clickTrack}>
+                return <tr key={(row.name + row.album + row.artist).replaceAll(' ', '')} onClick={clickTrack}>
                   <td>{row.name}</td>
                   <td>{row.album}</td>
-                  <td>{row.author}</td>
+                  <td>{row.artist}</td>
                   <td>{row.year}</td>
                   <td>{'mp3 ' + row.quality}</td>
-                  <td>{row.duration}</td>
+                  <td>{Math.floor(row.duration/60) + ':' + row.duration % 60}</td>
                   <td></td>
                 </tr>
               })

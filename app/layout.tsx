@@ -28,7 +28,7 @@ export default function RootLayout({
             <LeftMenu/>
             {children}
           </div>
-          <Player/>
+        <Player/>
         </body>
       </AppWrapper>
     </html>

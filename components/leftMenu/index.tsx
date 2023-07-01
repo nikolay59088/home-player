@@ -34,15 +34,15 @@ const LeftMenu = () => {
       {
         arrMenu.map( elem => {
           return elem.children.length ?
-            <MenuGroup key={elem.text} text={elem.text} icon={elem.icon} opened={state.menuOpened}>
+            <MenuGroup key={elem.text} text={elem.text} icon={elem.icon} opened={state.menuOpened as boolean}>
               {
                 elem.children.map( subElem => {
-                  return <MenuItem key={subElem.address} address={subElem.address} text={subElem.text} icon={subElem.icon} opened={state.menuOpened}/>
+                  return <MenuItem key={subElem.address} address={subElem.address} text={subElem.text} icon={subElem.icon} opened={state.menuOpened as boolean}/>
                 })
               }
             </MenuGroup>
             :
-            <MenuItem key={elem.address} address={elem.address} text={elem.text} icon={elem.icon} opened={state.menuOpened}/>
+            <MenuItem key={elem.address} address={elem.address} text={elem.text} icon={elem.icon} opened={state.menuOpened as boolean}/>
         })
       }
     </nav>

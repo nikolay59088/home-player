@@ -1,7 +1,6 @@
 
 .headerContainer{
-  height: 5vh;
-  min-height: 50px;
+  height: max(5vh, 50px);
   display: flex;
   justify-content: space-between;
   padding: 0 16px;
