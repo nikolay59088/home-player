@@ -1,0 +1,106 @@
+@import "@/app/variables";
+
+  .authContainer{
+    display: flex;
+    width: 70%;
+    height: 80%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+
+    .authLeftPartContainer{
+      padding: 15px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      mix-blend-mode: difference;
+
+
+      p{
+        width: 90%;
+        text-align: center;
+      }
+
+    }
+
+    .authRightPartContainer{
+      display: flex;
+      width: 50%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .authFormContainer{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+
+        label{
+          margin-bottom: 10px;
+          margin-left: 15px;
+        }
+
+        input:not([type="submit"]):not([type="button"]){
+          border: none;
+          outline: none;
+          padding: 15px 15px;
+          border-radius: 50px;
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+
+        .errorMessage{
+          color: red;
+          mix-blend-mode: difference;
+          margin: 0 0 0 15px;
+        }
+
+        .authFormButtons{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 15px;
+
+          input[type="submit"]{
+            font-size: 16px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            padding: 15px 15px;
+            border-radius: 15px;
+            background-color: $darkColor;
+            color: white;
+            min-width: max(100px, 40%);
+
+            &:hover{
+              background-color: $mediumColor;
+            }
+          }
+
+          input[type="button"]{
+            width: 40%;
+            font-size: 16px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            padding: 15px 15px;
+            border-radius: 15px;
+
+            &:hover{
+              background-color: rgb(229, 229, 229);
+            }
+          }
+        }
+
+        .authServicesContainer{
+          display: flex;
+          flex-direction: column;
+          margin-top: 15px;
+          align-items: center;
+        }
+      }
+    }
+
+  }

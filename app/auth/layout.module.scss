@@ -1,0 +1,15 @@
+
+.imageContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("/public/images/tempBackground.jpeg");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}

@@ -1,4 +1,31 @@
+@import "app/variables";
 
 .searchFilterContainer{
-  height: 50px;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+
+  .searchFilter{
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 30px;
+    background-color: $primaryTextColor;
+    border-radius: 15px;
+    padding: 0 5px;
+
+    input{
+
+      outline: none;
+      border: none;
+    }
+
+    svg{
+      cursor: pointer;
+      fill: $tableBackgroundColor;
+      height: 80%;
+      width: auto;
+    }
+
+  }
 }

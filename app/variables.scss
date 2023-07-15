@@ -19,6 +19,7 @@ $tableHoverColor: #1D1D1D;
 $lightColor: #31C27C;
 $mediumColor: #1DB251;
 $darkColor: #008827;
+$warningColor: #FFCC00;
 
 
 @mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {

@@ -1,0 +1,47 @@
+@import "app/variables";
+
+.paginationContainer{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px 15px max(10vh, 120px);
+
+  p{
+    font-size: 14px;
+    color: $primaryTextColor;
+    margin: 0 15px;
+  }
+
+  select{
+    font-size: 14px;
+    border: none;
+    margin-left: 6px;
+    padding-right: 3px;
+    margin-right: 6px;
+    background-color: transparent;
+    color: $primaryTextColor;
+    outline: none;
+
+    &:hover{
+      cursor: pointer;
+    }
+
+    & > option {
+      outline: none;
+      font-size: 14px;
+      color: $primaryTextColor;
+      background-color: $tableBackgroundColor;
+      border: none;
+    }
+  }
+
+  .paginationCountSongs {
+    margin-left: 15px;
+  }
+
+  button{
+    margin: 0 15px;
+  }
+
+
+}

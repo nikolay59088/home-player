@@ -1,34 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Инициализация базы данных
 
-First, run the development server:
+Перед запуском сервера необходимо создать базу данных:
+
+```bash
+npm run migrate init
+```
+
+В корне проекта должен появиться файл `homePlayer.db`. Это и есть наша база.
+
+## Заполнение .env
+
+В корне проекта необходимо создать .env файл следующего содержания:
+
+```text
+DATABASE_URL=file:../homePlayer.db
+SERVER_IP=127.0.0.1
+SERVER_PORT=3000
+MUSIC_DIRECTORY=C:\\music
+YANDEX_CLIENT_ID=
+YANDEX_REDIRECT_URL=https://oauth.yandex.ru/verification_code
+JWT_SECRET_KEY=secret_key
+JWT_EXPIRES_IN=60
+JWT_PASSWORD_SALT=12
+```
+
+Теперь для работоспособности необходимо заполнить эти параметры:
+
+- `DATABASE_URL` - путь к базе данных. Стандартный путь это путь до базы в корне проекта.
+- `SERVER_IP` - внешний ip сервера. Необходим для корректной работы яндекс служб.
+- `SERVER_PORT` - порт сервера, на котором будет запущено web-приложение.
+- `MUSIC_DIRECTORY` - путь до директории, в которой будет находиться музыка для воспроизведения. Считывание происходит рекурсивно поэтому музкыку внутри директории можно сортировать по папкам.
+- `YANDEX_CLIENT_ID` - client id яндекс приложения. Можно получить создав приложение в [Oauth яндекс](https://oauth.yandex.ru/). Необходим для корреткной работы яндекс служб.
+- `YANDEX_REDIRECT_URL` - url на который будет отправляться информация об авторизации через яндекс. Должен совпадать с тем адресом, который задан в [Oauth яндекс](https://oauth.yandex.ru/).
+- `JWT_SECRET_KEY` - Секретный ключ шифрования/расшифровки JWT токена.
+- `JWT_EXPIRIES_IN` - Время жизни токена в минутах. После истечения происходит обновление токена или если невозможно обновление, отправляет на страницу авторизации.
+- `JWT_PASSWORD_SALT` - Соль, используемая при шифровании пароля. задается строго число (хоть и возможно использование строки, но бибилиотека bycript падает в ошибку).
+
+## Первый запуск приложения
+
+после выполнения всех действий выше, переходим к первому запуску.
+
+Для начала необходимо запустить приложение следующей командой:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+После запуска системы нам необходимо дать приложению понять, что нужно прочитать директорию с музыкой. Для этого делаем следующее:.
+1. Заходим в приложение через браузер.
+2. На странице авторизации регистрируем новую учетную запись.
+3. В интерфесе приожения в правом верхнем углу есть кнопка "обновить библиотеку". Нажимаем на нее и ждем.
+4. После завершения обновления библиотеки можно начать пользоваться приложением.

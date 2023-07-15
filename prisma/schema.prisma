@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model album {
+  id                   Int                    @id @default(autoincrement())
+  name                 String
+  album_artists_artist album_artists_artist[]
+  song                 song[]
+}
+
+model album_artists_artist {
+  albumId  Int
+  artistId Int
+  album    album  @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  artist   artist @relation(fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@id([albumId, artistId])
+  @@index([artistId], map: "IDX_bce2fa2c71f571a2443d218d1f")
+  @@index([albumId], map: "IDX_042267cf16006041192432f831")
+}
+
+model song_artists_artist {
+  songId   Int
+  artistId Int
+  artist   artist @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  song     song   @relation(fields: [songId], references: [id], onDelete: Cascade)
+
+  @@id([songId, artistId])
+  @@index([songId])
+  @@index([artistId])
+}
+
+model artist {
+  id                   Int                    @id @default(autoincrement())
+  name                 String
+  album_artists_artist album_artists_artist[]
+  song_artists_artist  song_artists_artist[]
+}
+
+model genre {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  song_genres_genre song_genres_genre[]
+}
+
+model song {
+  id                  Int                   @id @default(autoincrement())
+  name                String
+  year                Int
+  trackNum            Int
+  duration            Int
+  link                String
+  imgSong             String
+  quality             Int
+  format              String
+  size                Int
+  refreshed           Boolean
+  albumId             Int?
+  album               album?                @relation(fields: [albumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  song_artists_artist song_artists_artist[]
+  song_genres_genre   song_genres_genre[]
+}
+
+model song_genres_genre {
+  songId  Int
+  genreId Int
+  genre   genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+  song    song  @relation(fields: [songId], references: [id], onDelete: Cascade)
+
+  @@id([songId, genreId])
+  @@index([songId])
+  @@index([genreId])
+}
+
+model user {
+  id              String   @id @unique @default(uuid())
+  email           String   @unique
+  password        String
+  name            String
+  isAdmin         Boolean
+  createdAt       DateTime
+  updatedAt       DateTime
+  lastLoginAt     DateTime
+  yandexToken     String
+  yandexTokenLife String
+}

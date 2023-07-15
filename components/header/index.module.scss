@@ -1,3 +1,4 @@
+@import "app/variables";
 
 .headerContainer{
   height: max(5vh, 50px);
@@ -5,11 +6,25 @@
   justify-content: space-between;
   padding: 0 16px;
 
-  & > .leftPartContainer{
+  svg{
+    margin-left: 15px;
+    fill: $primaryTextColor;
+    transition-duration: .2s;
+    height: 60%;
+    user-select: none;
+    width: auto;
+
+    &:hover{
+      cursor: pointer;
+      fill: $lightColor;
+    }
+  }
+
+  .leftPartContainer{
     display: flex;
     align-items: center;
 
-    & > .menuImage{
+    .menuImage{
       margin-right: 25px;
 
       &:hover{
@@ -18,11 +33,16 @@
     }
   }
 
-  & > .rightPartContainer{
+  .rightPartContainer{
     display: flex;
     align-items: center;
 
-    & > .profileImage{
+    .warningSvg{
+      fill: $warningColor;
+    }
+
+    .profileImage{
+
       &:hover{
         cursor: pointer;
       }

@@ -3,17 +3,27 @@ import Link from "next/link";
 
 type AlbumItemType = {
     name: string,
-    album: string,
+    artists: {
+        artist: {
+          name: string
+        }
+    }[],
     albumLogo: any,
-    link: string
+    idAlbum: number
 }
 
-const AlbumItem = ({ name, album, albumLogo, link }: AlbumItemType) => {
+const AlbumItem = ({ name, artists, albumLogo, idAlbum }: AlbumItemType) => {
+
+  const artistsArr = artists.map(artist => artist.artist.name)
+
     return (
-        <Link href={link} className={styles.albumItemContainer}>
-        <img src={albumLogo} alt={name}/>
+        <Link href={window.origin + '/api/music/albums/getAlbums/' + idAlbum} className={styles.albumItemContainer}>
+            <img src={albumLogo} alt={name}/>
+          <div className={styles.albumNameContainer}>
             <span className={styles.nameSong}>{name}</span>
-            <span>{album}</span>
+            <span className={styles.artistsSong}>{artistsArr.join(', ')}</span>
+          </div>
+
         </Link>
     );
 };

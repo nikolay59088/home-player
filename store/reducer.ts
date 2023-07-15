@@ -1,21 +1,41 @@
-import { INITIALIZE_STORE, UPDATE_HEADER_NAME, UPDATE_MENU_STATUS, UPDATE_PLAYER_STATUS } from './constants'
-import { actionType, contextDataType, currentTrackType } from '@/store/contextTypes.ts'
+import {
+  INITIALIZE_STORE,
+  UPDATE_HEADER_NAME,
+  UPDATE_MENU_STATUS,
+  UPDATE_PLAYER_STATUS,
+  UPDATE_REFRESH_STATUS, UPDATE_USER_DATA
+} from './constants'
+import { actionType, contextDataType } from '@/store/contextTypes.ts'
+import { getUserTemplate } from '@/lib/localStorage.ts'
 
 
 export const initialState: contextDataType = {
+  user: getUserTemplate(),
   menuName: 'Главная страница',
   menuOpened: true,
   MPOpened: false,
+  currentTrackId: -1,
   currentTrack: {
+    id: -1,
+    album: {
+      name: '',
+      id: -1
+    },
     name: '',
-    artist: '',
-    album: '',
-    year: 0,
+    quality: 0,
     duration: 0,
+    format: '',
+    year: 0,
+    trackNum: 0,
     link: '',
-    imgSong: '',
-    quality: 0
+    albumId: 0,
+    size: 0,
+    imgSong: '/images/no-image.png',
+    song_artists_artist: []
   },
+  songsRefreshed: false,
+  currentDuration: '--:--',
+  playing: false,
   playlist: []
 }
 export const appReducer = (state = initialState, action: actionType) => {
@@ -23,6 +43,12 @@ export const appReducer = (state = initialState, action: actionType) => {
   case INITIALIZE_STORE: {
     return {
       ...action.payload
+    }
+  }
+  case UPDATE_USER_DATA: {
+    return {
+      ...state,
+      user: action.payload.user
     }
   }
   case UPDATE_HEADER_NAME: {
@@ -38,13 +64,20 @@ export const appReducer = (state = initialState, action: actionType) => {
     }
   }
   case UPDATE_PLAYER_STATUS: {
-
-   const imgSong = action.payload.currentTrack?.imgSong.length === 0 && action.payload.currentTrack?.name.length > 0 ? '/images/no-image.png' : action.payload.currentTrack?.imgSong as string
-
     return {
       ...state,
-      MPOpened: action.payload.MPOpened,
-      currentTrack: {...state.currentTrack, ...action.payload.currentTrack as currentTrackType, imgSong  }
+      MPOpened: action.payload.MPOpened !== undefined ? action.payload.MPOpened : state.MPOpened,
+      playlist: action.payload.playlist !== undefined ? action.payload.playlist : state.playlist,
+      currentTrackId: action.payload.currentTrackId !== undefined ? action.payload.currentTrackId : state.currentTrackId,
+      currentTrack: action.payload.currentTrack !== undefined ? action.payload.currentTrack : state.currentTrack,
+      currentDuration: action.payload.currentDuration !== undefined ? action.payload.currentDuration : state.currentDuration,
+      playing: action.payload.playing !== undefined ? action.payload.playing : state.playing
+    }
+  }
+  case UPDATE_REFRESH_STATUS: {
+    return {
+      ...state,
+      songsRefreshed: action.payload.songsRefreshed
     }
   }
   default:

@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
+.idea
 .pnp.js
 
 # testing
@@ -33,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#other files
+homePlayer.db
