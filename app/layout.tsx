@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
 import styles from './layout.module.scss'
 import { AppWrapper } from '@/store'
+import Player from '@/components/player'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -22,6 +23,7 @@ export default function RootLayout({
     <AppWrapper>
       <body className={inter.className + ' ' + styles.bodyContainer}>
       {children}
+      <Player/>
       </body>
     </AppWrapper>
     </html>

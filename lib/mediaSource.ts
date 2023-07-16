@@ -62,7 +62,7 @@ export const sourceOpen = (mediaSource: MediaSource, TrackId: number, playing:bo
   // let sourceBuffer = mediaSource.addSourceBuffer(mimeCodec)
   // sourceBuffer.mode = 'sequence'
 
-  fetch(window.origin + `/api/music/getSongFile?id=${TrackId}`)
+  fetch(window.origin + `/api/music/songs/getSongFile?id=${TrackId}`)
     .then(res => {
       return res.body?.getReader()
     })

@@ -35,6 +35,10 @@ const Player = () => {
 
   useEffect(() => {
 
+    console.log('123')
+    console.log(state.MPOpened && state.currentTrackId != state.currentTrack?.id)
+    console.log(statePlayer)
+
     if (state.MPOpened && state.currentTrackId != state.currentTrack?.id){
 
       //duration

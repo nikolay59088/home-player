@@ -137,6 +137,29 @@ const refreshTableInfo = async (arrSongs: objSong[]) => {
       }
     }
 
+    //Создание пустого альбома если альбом не найден
+    if (!albumId){
+      const foundAlbum = await prisma.album.findMany({
+        where: {
+          name: {
+            equals: 'Неизв. альбом'
+          }
+        }
+      })
+
+      if (foundAlbum.length  > 0){
+        albumId = foundAlbum[0].id
+      }else{
+        const newAlbum = await prisma.album.create({
+          data: {
+            name: 'Неизв. альбом'
+          }
+        })
+
+        albumId = newAlbum.id
+      }
+    }
+
     //Связывание исполнителей альбома с альбомом
     if (albumId && arrAlbumArtistsId.length){
       for (let indexAlbumArtist in arrAlbumArtistsId){
@@ -273,6 +296,32 @@ const clearDatabase = async (prisma: PrismaClient) => {
       refreshed: false
     }
   })
+
+  //Очистка альбомов
+
+  // const albumsId = await prisma.song.findMany({
+  //   select: {
+  //     albumId: true
+  //   },
+  //   distinct: 'albumId'
+  // })
+  //
+  // let arrWithId: number[] = []
+  // for (let albumId of albumsId){
+  //   arrWithId.push(albumId.albumId || 0)
+  // }
+  //
+  // await prisma.album.deleteMany({
+  //   where: {
+  //     id: {
+  //       notIn: await prisma.song.findMany({
+  //         select: {
+  //           albumId: true
+  //         }
+  //       }).
+  //     }
+  //   }
+  // })
 }
 
 

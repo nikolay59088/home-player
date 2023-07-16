@@ -1,6 +1,6 @@
 'use client'
 
-import AlbumItem from "@/components/albumItem";
+import AlbumItem from "@/components/albumItem"
 import styles from './page.module.scss'
 import SearchAndFilter from '@/components/searchAndFilter'
 import { ChangeEvent, useEffect, useState } from 'react'

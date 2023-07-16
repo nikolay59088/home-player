@@ -26,17 +26,17 @@ const Auth = () => {
   const refForm = useRef(null)
   const router = useRouter()
 
-  // useEffect(() => {
-  //   fetch(window.origin + `/api/other/getBackgroundImage`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       const currDiv = refDiv.current || document.createElement('div')
-  //       const parentDiv = currDiv.parentElement || document.createElement('div')
-  //
-  //       parentDiv.style.backgroundImage = `url("${data.image}")`
-  //     })
-  //
-  // }, [])
+  useEffect(() => {
+    fetch(window.origin + `/api/other/getBackgroundImage`)
+      .then(res => res.json())
+      .then(data => {
+        const currDiv = refDiv.current || document.createElement('div')
+        const parentDiv = currDiv.parentElement || document.createElement('div')
+
+        parentDiv.style.backgroundImage = `url("${data.image}")`
+      })
+
+  }, [])
 
 
   const readyWidget = () => {

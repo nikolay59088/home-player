@@ -37,9 +37,15 @@ export async function GET(req: NextRequest) {
       name: {
         contains: filter
       }
+    },
+    orderBy: {
+      name: 'asc'
     }
   } : {
-    take: 500
+    take: 500,
+    orderBy: {
+      name: 'asc'
+    }
   }
 
   let resultWithCount = null
